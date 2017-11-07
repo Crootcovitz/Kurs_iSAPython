@@ -4,6 +4,7 @@ print(zdanie, end=' ')
 print(zdanie2)
 
 print(zdanie+zdanie2)
+
 print(zdanie, zdanie2)
 
 # moj_plik='C:\teamwork\nowy_folder\skrypt.py'
