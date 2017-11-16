@@ -4,7 +4,6 @@ liczby = [2,4324,25,43,4,5765,756,7,3425,325,364]
 # x - tak
 # y - nie
 
-
 def czy_w_zakresie(liczba, zakres=range(100)):
     '''
     Sprawdza, czy podana liczba jest w zakresie
