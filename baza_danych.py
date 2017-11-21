@@ -1,96 +1,97 @@
 baza_danych = []
 
 
-def dodanie_rekordu(rekord1, rekord2, rekord3):
+def dodanie_rekordu(tytul, rok, ocena):
     """
     Dodaje rekord do bazy danych, jeśli jeszcze go tam nie ma.
-    :param rekord1: Tytuł filmu
-    :param rekord2: Rok premiery
-    :param rekord3: Ocena
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
+    :param ocena: Ocena
     :return: None
     """
-    w_bazie1 = False
-    for wpis1 in baza_danych:
-        if rekord1 in wpis1 and rekord2 in wpis1:
-            w_bazie1 = True
-    if w_bazie1 == False:
-        baza_danych.append([rekord1, rekord2, rekord3])
-        print(f'Pomyślnie dodano {rekord1}({rekord2}) do bazy danych.')
+    w_bazie = False
+    for wpis in baza_danych:
+        if tytul in wpis and rok in wpis:
+            w_bazie = True
+    if w_bazie == False:
+        baza_danych.append([tytul, rok, ocena])
+        print(f'Pomyślnie dodano {tytul}({rok}) do bazy danych.')
     else:
-        print(f'{rekord1}({rekord2}) już istnieje w bazie danych.')
+        print(f'{tytul}({rok}) już istnieje w bazie danych.')
 
 
-def usun_rekord(rekord1, rekord2):
+def usun_rekord(tytul, rok):
     """
     Usuwa rekord z bazy danych, lub informuje o jego braku.
-    :param rekord1: Tytuł filmu
-    :param rekord2: Rok premiery
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
     :return: None
     """
-    w_bazie2 = False
-    for wpis2 in baza_danych:
-        if rekord1 in wpis2 and rekord2 in wpis2:
-            baza_danych.remove(wpis2)
-            w_bazie2 = True
-    if w_bazie2 == False:
-        print(f'Brak {rekord1}({rekord2}) w bazie danych.')
+    w_bazie = False
+    for wpis in baza_danych:
+        if tytul in wpis and rok in wpis:
+            baza_danych.remove(wpis)
+            w_bazie = True
+    if w_bazie == False:
+        print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
-        print(f'Pomyślnie usunięto {rekord1}({rekord2}) z bazy danych.')
+        print(f'Pomyślnie usunięto {tytul}({rok}) z bazy danych.')
 
 
-def spr(rekord1, rekord2):
+def spr(tytul, rok):
     """
     Sprawdza, czy wpis znajduje się w bazie danych.
-    :param rekord1: Tytuł filmu
-    :param rekord2: Rok premiery
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
     :return: None
     """
-    w_bazie3 = False
-    for wpis3 in baza_danych:
-        if rekord1 in wpis3 and rekord2 in wpis3:
-            w_bazie3 = True
-    if w_bazie3 == False:
-        print(f'Brak {rekord1}({rekord2}) w bazie danych.')
+    w_bazie = False
+    for wpis in baza_danych:
+        if tytul in wpis and rok in wpis:
+            w_bazie = True
+    if w_bazie == False:
+        print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
-        print(f'{rekord1}({rekord2}) istnieje w bazie danych.')
+        print(f'{tytul}({rok}) istnieje w bazie danych.')
 
 
-def zmiana_oceny(rekord1, rekord2, rekord3):
+def zmiana_oceny(tytul, rok, ocena):
     """
      Dodaje rekord do bazy danych, jeśli jeszcze go tam nie ma.
-    :param rekord1: Tytuł filmu
-    :param rekord2: Rok premiery
-    :param rekord3: Ocena
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
+    :param ocena: Ocena
     :return: None
     """
-    w_bazie4 = False
-    for wpis4 in baza_danych:
-        if rekord1 in wpis4 and rekord2 in wpis4:
-            baza_danych[baza_danych.index(wpis4)][2] = rekord3
-            w_bazie4 = True
-    if w_bazie4 == False:
-        print(f'Brak {rekord1}({rekord2}) w bazie danych.')
+    w_bazie = False
+    for wpis in baza_danych:
+        if tytul in wpis and rok in wpis:
+            baza_danych[baza_danych.index(wpis)][2] = ocena
+            w_bazie = True
+    if w_bazie == False:
+        print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
-        print(f'Pomyślnie zmieniono ocenę dla {rekord1}({rekord2}).')
+        print(f'Pomyślnie zmieniono ocenę dla {tytul}({rok}).')
 
 
-def pokaz(rekord1, rekord2):
+def pokaz(tytul, rok):
     """
     Pokazuje pojednyczy wpis z bazy danych.
-    :param rekord1: Tytuł filmu
-    :param rekord2: Rok premiery
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
     :return: None
     """
-    w_bazie5 = False
-    for wpis5 in baza_danych:
-        if rekord1 in wpis5 and rekord2 in wpis5:
-            pokaz_indeks = baza_danych.index(wpis5)
-            w_bazie5 = True
-    if w_bazie5 == False:
-        print(f'Brak {rekord1}({rekord2}) w bazie danych.')
+    w_bazie = False
+    for wpis in baza_danych:
+        if tytul in wpis and rok in wpis:
+            pokaz_indeks = baza_danych.index(wpis)
+            w_bazie = True
+    if w_bazie == False:
+        print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
         print(f'{"Tytuł":40}{"Rok":6}{"Ocena":4}\n'
               f'{baza_danych[pokaz_indeks][0]:40}{baza_danych[pokaz_indeks][1]:6}{baza_danych[pokaz_indeks][2]:4}')
+
 
 warunek = True
 while warunek:
