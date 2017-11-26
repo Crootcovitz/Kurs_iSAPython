@@ -116,9 +116,12 @@ while warunek:
                 ':Jeśli chcesz zakończyć program, wpisz EXIT\n')
     if inp == 'LOAD':
         plik_baza = input('Podaj ścieżkę do pliku:\n')
-        with open(plik_baza, 'rb') as plik:
-            baza_danych = pickle.load(plik)
-        print('Pomyślnie wczytano bazę danych.')
+        try:
+            with open(plik_baza, 'rb') as plik:
+                baza_danych = pickle.load(plik)
+            print('Pomyślnie wczytano bazę danych.')
+        except FileNotFoundError:
+            print('Taki plik nie istnieje.')
     elif inp == 'ADD':
         tytul1 = input('Podaj tytuł filmu\n')
         rok1 = input('Podaj rok premiery filmu\n')
@@ -148,7 +151,7 @@ while warunek:
         rok5 = input('Podaj rok premiery filmu\n')
         pokaz(tytul5, rok5)
     elif inp == 'SAVE':
-        plik_do_zapisu = input('Podaj ścieżkę do zapisania pliku razem z jego nazwą:\n')
+        plik_do_zapisu = input('Podaj ścieżkę do zapisania pliku:\n')
         with open('baza_filmy.pckl', 'wb') as plik:
             pickle.dump(baza_danych, plik)
         print('Pomyślnie zapisano bazę danych do pliku.')
