@@ -152,9 +152,12 @@ while warunek:
         pokaz(tytul5, rok5)
     elif inp == 'SAVE':
         plik_do_zapisu = input('Podaj ścieżkę do zapisania pliku:\n')
-        with open('baza_filmy.pckl', 'wb') as plik:
-            pickle.dump(baza_danych, plik)
-        print('Pomyślnie zapisano bazę danych do pliku.')
+        try:
+            with open(plik_do_zapisu, 'wb') as plik:
+                pickle.dump(baza_danych, plik)
+            print('Pomyślnie zapisano bazę danych do pliku.')
+        except FileNotFoundError:
+            print('Podana ścieżka prowadzi do nieistniejącego folderu.')
     elif inp == 'EXIT':
         warunek = False
         print('Kończenie pracy programu...')
