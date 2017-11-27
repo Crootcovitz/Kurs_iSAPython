@@ -3,6 +3,20 @@ import pickle
 
 baza_danych = []
 
+def znajdz_wpis(tytul, rok):
+    """
+    Sprawdza, czy dany wpis znajduje się w bazie danych
+    :param tytul: Tytuł filmu
+    :param rok: Rok premiery
+    :return: Wpis lub None
+    """
+    for wpis in baza_danych:
+        if tytul == wpis[0] and rok == wpis[1]:
+            do_zwrotu = wpis
+            break
+        else:
+            do_zwrotu = None
+    return do_zwrotu
 
 def dodanie_rekordu(tytul, rok, ocena):
     """
@@ -12,12 +26,8 @@ def dodanie_rekordu(tytul, rok, ocena):
     :param ocena: Ocena
     :return: None
     """
-    w_bazie = False
-    for wpis in baza_danych:
-        if tytul == wpis[0] and rok == wpis[1]:
-            w_bazie = True
-            break
-    if w_bazie == False:
+    wpis = znajdz_wpis(tytul, rok)
+    if wpis == None:
         baza_danych.append([tytul, rok, ocena])
         print(f'Pomyślnie dodano {tytul}({rok}) do bazy danych.')
     else:
@@ -31,15 +41,11 @@ def usun_rekord(tytul, rok):
     :param rok: Rok premiery
     :return: None
     """
-    w_bazie = False
-    for wpis in baza_danych:
-        if tytul == wpis[0] and rok == wpis[1]:
-            baza_danych.remove(wpis)
-            w_bazie = True
-            break
-    if w_bazie == False:
+    wpis = znajdz_wpis(tytul, rok)
+    if wpis == None:
         print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
+        baza_danych.remove(wpis)
         print(f'Pomyślnie usunięto {tytul}({rok}) z bazy danych.')
 
 
@@ -50,12 +56,8 @@ def spr(tytul, rok):
     :param rok: Rok premiery
     :return: None
     """
-    w_bazie = False
-    for wpis in baza_danych:
-        if tytul == wpis[0] and rok == wpis[1]:
-            w_bazie = True
-            break
-    if w_bazie == False:
+    wpis = znajdz_wpis(tytul, rok)
+    if wpis == None:
         print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
         print(f'{tytul}({rok}) istnieje w bazie danych.')
@@ -69,15 +71,11 @@ def zmiana_oceny(tytul, rok, ocena):
     :param ocena: Ocena
     :return: None
     """
-    w_bazie = False
-    for wpis in baza_danych:
-        if tytul == wpis[0] and rok == wpis[1]:
-            baza_danych[baza_danych.index(wpis)][2] = ocena
-            w_bazie = True
-            break
-    if w_bazie == False:
+    wpis = znajdz_wpis(tytul, rok)
+    if wpis == None:
         print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
+        baza_danych[baza_danych.index(wpis)][2] = ocena
         print(f'Pomyślnie zmieniono ocenę dla {tytul}({rok}).')
 
 
@@ -88,15 +86,11 @@ def pokaz(tytul, rok):
     :param rok: Rok premiery
     :return: None
     """
-    w_bazie = False
-    for wpis in baza_danych:
-        if tytul == wpis[0] and rok == wpis[1]:
-            pokaz_indeks = baza_danych.index(wpis)
-            w_bazie = True
-            break
-    if w_bazie == False:
+    wpis = znajdz_wpis(tytul, rok)
+    if wpis == None:
         print(f'Brak {tytul}({rok}) w bazie danych.')
     else:
+        pokaz_indeks = baza_danych.index(wpis)
         print(f'{"Tytuł":40}{"Rok":6}{"Ocena":4}\n'
               f'{baza_danych[pokaz_indeks][0]:40}{baza_danych[pokaz_indeks][1]:6}{baza_danych[pokaz_indeks][2]:4}')
 
