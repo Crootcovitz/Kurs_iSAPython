@@ -1,7 +1,7 @@
 import pickle
-from baza import Baza
+import baza_funkcje
 
-baza_danych = Baza()
+baza_danych = []
 
 
 warunek = True
@@ -29,35 +29,35 @@ while warunek:
         tytul1 = input('Podaj tytuł filmu\n')
         rok1 = input('Podaj rok premiery filmu\n')
         ocena1 = input('Podaj ocenę w filmu w skali od 1 do 10\n')
-        baza_danych.dodanie_rekordu(tytul1, rok1, ocena1)
+        baza_funkcje.dodanie_rekordu(tytul1, rok1, ocena1, baza_danych)
     elif inp == 'DEL':
         tytul2 = input('Podaj tytuł filmu\n')
         rok2 = input('Podaj rok premiery filmu\n')
-        baza_danych.usun_rekord(tytul2, rok2)
+        baza_funkcje.usun_rekord(tytul2, rok2, baza_danych)
     elif inp == 'CHECK':
         tytul3 = input('Podaj tytuł filmu\n')
         rok3 = input('Podaj rok premiery filmu\n')
-        baza_danych.spr(tytul3, rok3)
+        baza_funkcje.spr(tytul3, rok3, baza_danych)
     elif inp == 'CHNG':
         tytul4 = input('Podaj tytuł filmu\n')
         rok4 = input('Podaj rok premiery filmu\n')
         ocena4 = input('Podaj nową ocenę w filmu w skali od 1 do 10\n')
-        baza_danych.zmiana_oceny(tytul4, rok4, ocena4)
+        baza_funkcje.zmiana_oceny(tytul4, rok4, ocena4, baza_danych)
     elif inp == 'LEN':
         print(f'W bazie danych znajduje się {len(baza_danych)} ocenionych flimów.')
     elif inp == 'SHOW':
         print(f'{"Tytuł":40}{"Rok":6}{"Ocena":4}')
         for i in range(0, len(baza_danych)):
-            print(f'{baza_danych[i].tytul:40}{baza_danych[i].rok:6}{baza_danych[i].ocena:>5}')
+            print(f'{baza_danych[i][0]:40}{baza_danych[i][1]:6}{baza_danych[i][2]:>5}')
     elif inp == 'SHOW1':
         tytul5 = input('Podaj tytuł filmu\n')
         rok5 = input('Podaj rok premiery filmu\n')
-        baza_danych.pokaz(tytul5, rok5)
+        baza_funkcje.pokaz(tytul5, rok5, baza_danych)
     elif inp == 'SAVE':
         plik_do_zapisu = input('Podaj ścieżkę do zapisania pliku:\n')
         try:
             with open(plik_do_zapisu, 'wb') as plik:
-                pickle.dump(baza_danych, plik, -1)
+                pickle.dump(baza_danych, plik)
             print('Pomyślnie zapisano bazę danych do pliku.')
         except FileNotFoundError:
             print('Podana ścieżka prowadzi do nieistniejącego folderu.')

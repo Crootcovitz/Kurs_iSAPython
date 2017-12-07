@@ -1,0 +1,18 @@
+from dzien11.diament import *
+
+zwierzak = Zwierz('pantofelek')
+zwierzak.mow()
+zwierzak.ruszaj()
+print(15*'-')
+kucyk = Kon('Stefan', 'brązowy')
+kucyk.mow()
+kucyk.ruszaj()
+print(15*'-')
+osiolek = Osiol('Uparciuch', 4)
+osiolek.mow()
+osiolek.ruszaj()
+print(15*'-')
+mul_1 = Mul('Siwy', 'siwy')
+mul_1.mow()
+mul_1.ruszaj()
+# print(help(Kon))
