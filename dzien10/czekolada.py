@@ -18,6 +18,9 @@ class Czekolada(object):
             self.waga -= ilosc_g
             print('Bon apetit!')
 
+    def podaj_producenta(self):
+        print(self.producent)
+
     def __add__(self, other):
         return self.waga + other.waga
 

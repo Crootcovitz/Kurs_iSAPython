@@ -2,6 +2,7 @@ from unittest import TestCase
 from dzien12.kalkulator import *
 
 class KalkulatorTesty(TestCase):
+    # metoda wykonywana przed każdym testem
     def setUp(self):
         self.a = 2
         self.b = 3
@@ -35,3 +36,6 @@ class KalkulatorTesty(TestCase):
 
         # assert
         self.assertEqual(wynik_rzeczywisty, wynik_oczekiwany)
+
+# setUpClass - wykonywany przed ustawieniem klasy
+# tearDown - po każdym teście (np. do czyszczenia)
