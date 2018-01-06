@@ -45,7 +45,7 @@ for wiersz in aktywny_arkusz['A1':'C7']:
     for kom in wiersz:
         print(kom.value, end='\t\t')
     print()
-
+print(aktywny_arkusz.cell(row=1, column=1).coordinate)
 aktywny_arkusz['B9'] = 'Hello from Python!'
 plik.save('example2.xlsx')
 plik.close()
