@@ -47,5 +47,7 @@ for wiersz in aktywny_arkusz['A1':'C7']:
     print()
 print(aktywny_arkusz.cell(row=1, column=1).coordinate)
 aktywny_arkusz['B9'] = 'Hello from Python!'
+print(tuple(aktywny_arkusz['A1:C7'])[0][0].value)
+
 plik.save('example2.xlsx')
 plik.close()
