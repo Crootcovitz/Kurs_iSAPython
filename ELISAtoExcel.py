@@ -115,7 +115,7 @@ def wypisz_w_kolumnie(lista, it, ws, opcja):
                 it += 1
     return it
 
-def cutoff(cutoffy, ws):
+def cutoff(cutoffy, it1, it2, ws):
     temp = ''
     for zakres in cutoffy:
         if zakres == cutoffy[-1]:
@@ -131,6 +131,8 @@ def cutoff(cutoffy, ws):
     ws.cell(row=1,
             column=32,
             value=f'=AVERAGE({temp})+ 2 * (_xlfn.STDEVA({temp}))')
+    for row in range(it1, it2):
+        ws.cell(row=row, column=32, value='=AF1')
 
 
 def czul_i_spec(it1, it2, it3, ws):
@@ -151,7 +153,7 @@ def czul_i_spec(it1, it2, it3, ws):
                                 fill_type='solid')
     spec_wart = ws.cell(row=1, column=37, value=f'=(COUNTIF({zakres_spec},0)/COUNTA({zakres_spec}))*100')
 
-print('Program ELISAtoExcel_v1_0 napisany przez: Mateusz Dutkiewicz\n\n'
+print('Program ELISAtoExcel_v1_1 napisany przez: Mateusz Dutkiewicz\n\n'
       'Program przenosi wyniki pomiarów absorbancji w teście ELISA do skoroszytu Excel oraz oblicza czułość i specyficzność.\n'
       'Wszystkie studzienki na płytce muszą być wypełnione.\n'
       'Przed podjęciem dalszych działań przenieś wszystkie pliki z wynikami do folderu, w którym znajduje się program.\n\n')
@@ -263,7 +265,7 @@ for key in arkusze.keys():
     it = 2
     it_po_pl = wypisz_w_kolumnie(zakresy_plus, it, ws, '+')
     it_po_min = wypisz_w_kolumnie(zakresy_minus, it_po_pl, ws, '-')
-    cutoff(zakresy_co, ws)
+    cutoff(zakresy_co, it, it_po_min, ws)
     czul_i_spec(it, it_po_pl, it_po_min, ws)
 print('Pomyślnie przetworzono dane.')
 

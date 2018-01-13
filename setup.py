@@ -1,3 +1,3 @@
 from cx_Freeze import setup, Executable
 
-setup(name = 'ELISAtoExcel_v1_0', version = '1.0', description = '', executables = [Executable('ELISAtoExcel.py')])
+setup(name = 'ELISAtoExcel_v1_1', version = '1.1', description = '', executables = [Executable('ELISAtoExcel.py')])
